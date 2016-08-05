@@ -7,6 +7,9 @@
   <p align="center"> <b> Savor </b> Adds Delicious Flavors To Your Node Module, Like Tests, Coverage and Analysis. </p>
 </p>
 
+[![Version](https://img.shields.io/npm/v/savor.svg)](https://www.npmjs.com/package/savor)
+[![Build Status](https://travis-ci.org/idancali/savor.svg?branch=master)](https://travis-ci.org/idancali/savor)
+
 # Installation
 
 **STEP 1**
