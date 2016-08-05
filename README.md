@@ -4,7 +4,7 @@
   <a href="https://github.com/idancali/savor">
     <img height="256" src="https://raw.githubusercontent.com/idancali/savor/master/logo.png">
   </a>
-  <p align="center"> <b> Savor </b> Serves Up Fresh App Starters To Give You A Head Start. </p>
+  <p align="center"> <b> Savor </b> Adds Delicious Flavors To Your Node Module, Like Tests, Coverage and Analysis. </p>
 </p>
 
 # Installation
