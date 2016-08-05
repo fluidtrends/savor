@@ -3,6 +3,13 @@
   "version": "0.1.1",
   "description": "A simple way of adding tests to your Node module",
   "main": "index.js",
+  "scripts": {
+    "test": "./bin/index.js test",
+    "coverage": "./bin/index.js coverage",
+    "lint": "./bin/index.js lint",
+    "codacy": "./bin/index.js codacy",
+    "coveralls": "./bin/index.js coveralls"
+  },
   "bin": {
     "savor": "bin/index.js"
   },

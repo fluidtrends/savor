@@ -1,27 +1,54 @@
-var test = {
-  bin: "./node_modules/.bin/mocha",
-  args: ['--recursive', 'test/**/*.js']
-}
+var testBin      = "./node_modules/.bin/mocha";
+var coverageBin  = "./node_modules/.bin/istanbul";
+var lintBin      = "./node_modules/.bin/eslint";
+var coverallsBin = "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls";
+var codacyBin    = "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage";
+var rmBin        = "rm";
 
-var coverage = {
-  bin: "./node_modules/.bin/istanbul",
-  args: ['cover', './node_modules/.bin/_mocha', '--', '--report', 'lcovonly', 'test/**/*.js']
-}
+var testArgs           = ['--recursive', 'test/**/*.js'];
+var coverageArgs       = ['cover', './node_modules/.bin/_mocha', '--', '--report', 'lcovonly', 'test/**/*.js'];
+var coverallsArgs      = [];
+var codacyArgs         = [];
+var removeCoverageArgs = ['-rf', './coverage'];
+var lintArgs           = ['src/**/*.js', 'test/**/*.js'];
 
-var lint = {
-  bin: "./node_modules/.bin/eslint",
-  args: ['src/**/*.js', 'test/**/*.js']
-}
+var test = [{
+  bin: testBin,
+  args: testArgs
+}]
 
-var coveralls = {
-  bin: "./node_modules/.bin/istanbul",
-  args: ['cover', './node_modules/.bin/_mocha', '--', '--report', 'lcovonly', 'test/**/*.js', '&&', 'cat', './coverage/lcov.info', '|', './node_modules/.bin/coveralls', '&&', 'rm', '-rf', './coverage']
-}
+var coverage = [{
+  bin: coverageBin,
+  args: coverageArgs
+}]
 
-var codacy = {
-  bin: "./node_modules/.bin/istanbul",
-  args: ['cover', './node_modules/.bin/_mocha', '--', '--report', 'lcovonly', 'test/**/*.js', '&&', 'cat', './coverage/lcov.info', '|', './node_modules/.bin/codacy-coverage', '&&', 'rm', '-rf', './coverage']
-}
+var lint = [{
+  bin: lintBin,
+  args: lintArgs
+}]
+
+var coveralls = [
+{
+//   bin: coverageBin,
+//   args: coverageArgs
+// }, {
+  bin: coverallsBin,
+  args: coverallsArgs
+// }, {
+//   bin: rmBin,
+//   args: removeCoverageArgs
+}]
+
+var codacy = [{
+  bin: codacyBin,
+  args: codacyArgs
+}, {
+  bin: codacyBin,
+  args: codacyArgs
+}, {
+  bin: rmBin,
+  args: removeCoverageArgs
+}]
 
 module.exports = {
   test: test,
