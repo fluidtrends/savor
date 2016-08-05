@@ -1,15 +1,17 @@
-# Savor
-
 <p align="center">
   <a href="https://github.com/idancali/savor">
     <img height="256" src="https://raw.githubusercontent.com/idancali/savor/master/logo.png">
   </a>
   <p align="center"> <b> Savor </b> Adds Delicious Flavors To Your Node Module, Like Tests, Coverage and Analysis. </p>
-  [![Version](https://img.shields.io/npm/v/savor.svg)](https://www.npmjs.com/package/savor)
-  [![Build Status](https://travis-ci.org/idancali/savor.svg?branch=master)](https://travis-ci.org/idancali/savor)
-  [![Coverage Status](https://coveralls.io/repos/github/idancali/savor/badge.svg?branch=master)](https://coveralls.io/github/idancali/savor?branch=master)
 </p>
 
+# Savor
+
+[![Version](https://img.shields.io/npm/v/savor.svg)](https://www.npmjs.com/package/savor)
+[![Build Status](https://travis-ci.org/idancali/savor.svg?branch=master)](https://travis-ci.org/idancali/savor)
+[![Coverage Status](https://coveralls.io/repos/github/idancali/savor/badge.svg?branch=master)](https://coveralls.io/github/idancali/savor?branch=master)
+
+**Savor** Adds Delicious Flavors To Your Node Module, Like Tests, Coverage and Analysis.
 
 # Installation
 
