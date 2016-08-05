@@ -6,7 +6,7 @@ var codacyBin    = "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-covera
 var rmBin        = "rm";
 
 var testArgs           = ['--recursive', 'test/**/*.js'];
-var coverageArgs       = ['cover', './node_modules/.bin/_mocha', '--', '--report', 'lcovonly', 'test/**/*.js'];
+var coverageArgs       = ['cover', './node_modules/.bin/_mocha', '--report', 'lcovonly', '--', '-R', 'spec', 'test/**/*.js'];
 var coverallsArgs      = [];
 var codacyArgs         = [];
 var removeCoverageArgs = ['-rf', './coverage'];
@@ -29,14 +29,14 @@ var lint = [{
 
 var coveralls = [
 {
-//   bin: coverageBin,
-//   args: coverageArgs
-// }, {
+  bin: coverageBin,
+  args: coverageArgs
+}, {
   bin: coverallsBin,
   args: coverallsArgs
-// }, {
-//   bin: rmBin,
-//   args: removeCoverageArgs
+}, {
+  bin: rmBin,
+  args: removeCoverageArgs
 }]
 
 var codacy = [{
