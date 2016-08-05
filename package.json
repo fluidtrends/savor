@@ -1,0 +1,43 @@
+{
+  "name": "savor",
+  "version": "0.1.0",
+  "description": "A simple way of adding tests to your Node module",
+  "main": "index.js",
+  "bin": {
+    "savor": "bin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idancali/savor.git"
+  },
+  "author": "I. Dan Calinescu <idancalinescu@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/idancali/savor/issues"
+  },
+  "keywords": [
+    "bdd",
+    "tdd",
+    "mocha",
+    "unit-testing",
+    "testing",
+    "qa",
+    "test",
+    "coverage"
+  ],
+  "homepage": "https://github.com/idancali/savor",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "codacy-coverage": "^1.1.3",
+    "coveralls": "^2.11.12",
+    "eslint": "^3.2.2",
+    "fs-extra": "^0.30.0",
+    "istanbul": "^0.4.4",
+    "mocha": "^3.0.1",
+    "mocha-lcov-reporter": "^1.2.0",
+    "sinon": "^1.17.5",
+    "supertest": "^2.0.0",
+    "tmp": "0.0.28"
+  }
+}
