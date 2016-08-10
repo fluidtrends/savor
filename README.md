@@ -136,7 +136,7 @@ npm run savor lint
 
 # Working Example
 
-[Take a look at the example](https://raw.githubusercontent.com/idancali/savor/master/examples/main) for more details on how to integrate Savor within your module.
+[Take a look at the example](https://github.com/idancali/savor/tree/master/examples/main) for more details on how to integrate Savor within your module.
 
 In our example, we have a simple module in ```src/main.js``` that generates a greeting, like so:
 
