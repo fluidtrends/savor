@@ -102,7 +102,7 @@ npm run savor test
 
 ![Example](https://raw.githubusercontent.com/idancali/savor/master/examples/example.main.1.gif)
 
-# Test coverage
+# Test Coverage
 
 You can check your coverage like this:
 
@@ -118,7 +118,7 @@ npm run savor coverage
 
 ![Example](https://raw.githubusercontent.com/idancali/savor/master/examples/example.main.3.gif)
 
-# Static analysis
+# Static Analysis
 
 You can lint your code like this:
 
@@ -178,11 +178,9 @@ savor.add('should create a valid greeting', function(test, done) {
 run('Greeting Tests');
 ```
 
-Then just sit back and enjoy the show:
+Then simply [run your tests](#Running-Tests), [check your coverage](#Test-Coverage) and [analyze your code](#Static-Analysis) as documented above.
 
-![Example](https://raw.githubusercontent.com/idancali/savor/master/examples/example.main.1.gif)
-![Example](https://raw.githubusercontent.com/idancali/savor/master/examples/example.main.2.gif)
-![Example](https://raw.githubusercontent.com/idancali/savor/master/examples/example.main.3.gif)
+Enjoy!
 
 # License
 
