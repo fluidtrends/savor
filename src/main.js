@@ -29,6 +29,12 @@ var tmp    = require('tmp');
 var tests = [];
 
 /**
+ *  Directories of interest
+ **/
+var cwdDir  = process.cwd();
+var testDir = path.join(cwdDir, 'test');
+
+/**
  *   Add a test to be run.
  **/
 function addTest(name, exec) {
@@ -38,31 +44,49 @@ function addTest(name, exec) {
 /**
  *  Setup before each test
  **/
-function beforeEach(done) {
+function beforeEach(test, context, done) {
+  context.dir = tmp.dirSync().name;
+  process.chdir(context.dir);
   done && done();
 }
 
 /**
  *  Clean up after each test
  **/
-function afterEach(done) {
+function afterEach(test, context, done) {
+  fs.removeSync(context.dir);
   done && done();
+}
+
+/**
+ *  Execute a single test
+ **/
+function runTest(test, done) {
+  // Construct a test context
+  var context = {
+    expect: chai.expect,
+    assert: chai.assert,
+    http: supertest,
+    stub: sinon.stub,
+    chai: chai
+  };
+
+  beforeEach(test, context, function() {
+    // Run the actual test and give the test all the tools it needs for optimal execution
+    test.exec(context, function() {
+      afterEach(test, context, done);
+    });
+  });
 }
 
 /**
  *  We look at all our tests and describe them here and set them
  *  up so as to pass the execution over to the test framework.
  **/
-function runAllTests () {
+function runAllTests (name) {
 
   // We're going to create a single, flat list of scenarios
-  describe("All Tests", () => {
-
-      // Correctly setup each test
-      beforeEach(function(done) { beforeEach(done) });
-
-      // Clean up each test
-      afterEach(function(done)  { afterEach(done) });
+  describe(name, function() {
 
       tests.forEach(function(test) {
         // Have a look at all tests and define each test,
@@ -72,9 +96,8 @@ function runAllTests () {
           // Increase the timeout so that we can handle slower CI cycles if necessary
           this.timeout(60000);
 
-          // Run the actual test and give the test all the tools it needs for optimal execution
-          test.exec(done, {expect: chai.expect, assert: chai.assert, http: supertest, stub: sinon.stub,
-                spec: this, chai: chai});
+          // Execute the actual test
+          runTest(test, done);
         });
       });
   });
@@ -85,8 +108,8 @@ var savor = {
     addTest(name, exec);
     return savor;
   },
-  run: function() {
-    runAllTests();
+  run: function(name) {
+    runAllTests(name);
   }
 }
 
