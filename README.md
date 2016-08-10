@@ -114,7 +114,7 @@ or like this:
 npm run savor coverage
 ```
 
-https://raw.githubusercontent.com/idancali/savor/master/examples/example.main.1.gif
+[Example](https://raw.githubusercontent.com/idancali/savor/master/examples/example.main.1.gif)
 
 # Static analysis
 
