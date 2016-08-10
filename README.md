@@ -178,7 +178,7 @@ savor.add('should create a valid greeting', function(test, done) {
 run('Greeting Tests');
 ```
 
-Then simply [run your tests](#Running-Tests), [check your coverage](#Test-Coverage) and [analyze your code](#Static-Analysis) as documented above.
+Then simply [run your tests](#running-tests), [check your coverage](#test-coverage) and [analyze your code](#static-analysis) as documented above.
 
 Enjoy!
 
