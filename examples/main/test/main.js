@@ -1,6 +1,5 @@
 var savor = require('savor');
-
-var main = require('../src/main');
+var main  = require('../src/main');
 
 savor.add('should create a valid greeting', function(test, done) {
   var greeting = main.createGreeting('Dan');

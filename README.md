@@ -134,6 +134,56 @@ npm run savor lint
 
 ![Example](https://raw.githubusercontent.com/idancali/savor/master/examples/example.main.2.gif)
 
+# Working Example
+
+[Take a look at the example](https://raw.githubusercontent.com/idancali/savor/master/examples/main) for more details on how to integrate Savor within your module.
+
+In our example, we have a simple module in ```src/main.js``` that generates a greeting, like so:
+
+```javascript
+var main = {
+  createGreeting: function(name) {
+    return "Hello, " + name;
+  }
+}
+
+module.exports = main;
+```
+
+And here's how it is to test this with Savor. First, add the Savor hooks in your ```scripts``` field:
+
+```javascript
+"scripts": {
+  "savor": "./node_modules/.bin/savor",
+  "test": "./node_modules/.bin/savor test",
+  "lint": "./node_modules/.bin/savor lint",
+  "coverage": "./node_modules/.bin/savor coverage",
+  "coveralls": "./node_modules/.bin/savor coveralls",
+  "codacy": "./node_modules/.bin/savor codacy"
+}
+```
+
+Next, write your test in ```test/main.js```:
+
+```javascript
+var savor = require('savor');
+var main  = require('../src/main');
+
+savor.add('should create a valid greeting', function(test, done) {
+  var greeting = main.createGreeting('Dan');
+  test.expect(greeting).to.equal("Hello, Dan");
+  done && done();
+}).
+
+run('Greeting Tests');
+```
+
+Then just sit back and enjoy the show:
+
+![Example](https://raw.githubusercontent.com/idancali/savor/master/examples/example.main.1.gif)
+![Example](https://raw.githubusercontent.com/idancali/savor/master/examples/example.main.2.gif)
+![Example](https://raw.githubusercontent.com/idancali/savor/master/examples/example.main.3.gif)
+
 # License
 
 Copyright (c) 2016 I. Dan Calinescu
