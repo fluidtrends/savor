@@ -100,6 +100,8 @@ or even like this:
 npm run savor test
 ```
 
+![Example](https://raw.githubusercontent.com/idancali/savor/master/examples/example.main.1.gif)
+
 # Test coverage
 
 You can check your coverage like this:
@@ -114,7 +116,7 @@ or like this:
 npm run savor coverage
 ```
 
-[Example](https://raw.githubusercontent.com/idancali/savor/master/examples/example.main.1.gif)
+![Example](https://raw.githubusercontent.com/idancali/savor/master/examples/example.main.3.gif)
 
 # Static analysis
 
@@ -129,6 +131,8 @@ or like this:
 ```javascript
 npm run savor lint
 ```
+
+![Example](https://raw.githubusercontent.com/idancali/savor/master/examples/example.main.2.gif)
 
 # License
 
