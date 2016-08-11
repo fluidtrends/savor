@@ -30,7 +30,7 @@ Add Savor to your module scripts:
 
 ```javascript
 "scripts": {
-  "savor": "./node_modules/.bin/savor"
+  "savor": "savor"
 }
 ```
 
@@ -38,12 +38,12 @@ If you'd like more granularity over your scripts you can also install single Sav
 
 ```javascript
 "scripts": {
-  "savor": "./node_modules/.bin/savor",
-  "test": "./node_modules/.bin/savor test",
-  "lint": "./node_modules/.bin/savor lint",
-  "cover": "./node_modules/.bin/savor cover",
-  "coveralls": "./node_modules/.bin/savor coveralls",
-  "codacy": "./node_modules/.bin/savor codacy"
+  "savor": "savor",
+  "test": "savor test",
+  "lint": "savor lint",
+  "cover": "savor cover",
+  "coveralls": "savor coveralls",
+  "codacy": "savor codacy"
 }
 ```
 
@@ -154,12 +154,12 @@ And here's how it is to test this with Savor. First, add the Savor hooks in your
 
 ```javascript
 "scripts": {
-  "savor": "./node_modules/.bin/savor",
-  "test": "./node_modules/.bin/savor test",
-  "lint": "./node_modules/.bin/savor lint",
-  "coverage": "./node_modules/.bin/savor coverage",
-  "coveralls": "./node_modules/.bin/savor coveralls",
-  "codacy": "./node_modules/.bin/savor codacy"
+  "savor": "savor",
+  "test": "savor test",
+  "lint": "savor lint",
+  "coverage": "savor coverage",
+  "coveralls": "savor coveralls",
+  "codacy": "savor codacy"
 }
 ```
 

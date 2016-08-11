@@ -4,12 +4,12 @@
   "description": "This is a Savor example",
   "main": "index.js",
   "scripts": {
-    "savor": "./node_modules/.bin/savor",
-    "test": "./node_modules/.bin/savor test",
-    "lint": "./node_modules/.bin/savor lint",
-    "coverage": "./node_modules/.bin/savor coverage",
-    "coveralls": "./node_modules/.bin/savor coveralls",
-    "codacy": "./node_modules/.bin/savor codacy"
+    "savor": "savor",
+    "test": "savor test",
+    "lint": "savor lint",
+    "coverage": "savor coverage",
+    "coveralls": "savor coveralls",
+    "codacy": "savor codacy"
   },
   "author": "I. Dan Calinescu <idancalinescu@gmail.com>",
   "license": "MIT",
