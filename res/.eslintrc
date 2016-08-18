@@ -4,6 +4,7 @@
     "node": true,
     "es6": true
   },
+
   "ecmaFeatures": {
     "arrowFunctions": true,
     "classes": true,
@@ -12,6 +13,7 @@
   },
 
   "rules": {
+    "quotes": [2, "double", {"avoidEscape": true, "allowTemplateLiterals": true}],
     // require parens in arrow function arguments
    "arrow-parens": 0,
    // require space before/after arrow function's arrow
