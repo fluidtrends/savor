@@ -26,7 +26,21 @@ Savor uses the following Open-Source libraries to make that happen:
  - [Istanbul](http://gotwarlost.github.io/istanbul) as the code coverage tool
  - [ESLint](http://eslint.org) as the static analyzer
 
-Savor also gives you the ability to plug your tests into your continuously integration process via [Coveralls](https://coveralls.io) for code coverage and [Codacy](https://www.codacy.com) for code analysis.
+Savor also gives you the ability to plug your tests into your continuous integration process via [Coveralls](https://coveralls.io) for code coverage and [Codacy](https://www.codacy.com) for code analysis. To integrate with your CI tool, make sure you add a post-execution script that runs the following:
+```
+npm run coveralls
+npm run codacy
+```
+
+For [Travis CI](https://travis-ci.org) for example, this is what your ```.travis.yml``` file might look like:
+```yaml
+language: node_js
+node_js:
+  - "5.0"
+after_success:
+  - npm run coveralls
+  - npm run codacy
+```
 
 # Installation
 
