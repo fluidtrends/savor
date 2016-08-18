@@ -1,14 +1,14 @@
 {
   "name": "savor",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A simple way of adding tests to your Node module",
   "main": "index.js",
   "scripts": {
-    "test": "./bin/index.js test",
-    "coverage": "./bin/index.js coverage",
-    "lint": "./bin/index.js lint",
-    "codacy": "./bin/index.js codacy",
-    "coveralls": "./bin/index.js coveralls"
+    "test": "./node_modules/.bin/mocha --recursive test/specs/**/*.js",
+    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --report lcovonly test/specs/**/*.js",
+    "coveralls": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --report lcovonly test/specs/**/*.js && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf ./coverage",
+    "codacy": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --report lcovonly test/specs/**/*.js && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage && rm -rf ./coverage",
+    "lint": "./node_modules/.bin/eslint src/**/*.js test/specs/**/*.js"
   },
   "bin": {
     "savor": "bin/index.js"
@@ -46,5 +46,8 @@
     "sinon": "^1.17.5",
     "supertest": "^2.0.0",
     "tmp": "0.0.28"
+  },
+  "dependencies": {
+    "opn": "^4.0.2"
   }
 }

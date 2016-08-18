@@ -33,6 +33,7 @@ var tests = [];
  **/
 var cwdDir  = process.cwd();
 var testDir = path.join(cwdDir, 'test');
+var srcDir  = path.join(cwdDir, 'src');
 
 /**
  *   Add a test to be run.
@@ -74,6 +75,7 @@ function runTest(test, done) {
   beforeEach(test, context, function() {
     // Run the actual test and give the test all the tools it needs for optimal execution
     test.exec(context, function() {
+      // Clean up the context
       afterEach(test, context, done);
     });
   });
@@ -83,33 +85,85 @@ function runTest(test, done) {
  *  We look at all our tests and describe them here and set them
  *  up so as to pass the execution over to the test framework.
  **/
-function runAllTests (name) {
+function runAllTests (name, allDone) {
 
   // We're going to create a single, flat list of scenarios
   describe(name, function() {
 
-      tests.forEach(function(test) {
-        // Have a look at all tests and define each test,
-        // and pass it all the required dependencies to enable it
-        // to perform work without worrying about dependencies
-        it(test.name, function(done) {
-          // Increase the timeout so that we can handle slower CI cycles if necessary
-          this.timeout(60000);
+    after(function() {
+      // Tell the caller when all tests have finished running
+      allDone && allDone();
+    });
 
-          // Execute the actual test
-          runTest(test, done);
-        });
+    tests.forEach(function(test) {
+      // Have a look at all tests and define each test,
+      // and pass it all the required dependencies to enable it
+      // to perform work without worrying about dependencies
+      it(test.name, function(done) {
+        // Increase the timeout so that we can handle slower CI cycles if necessary
+        this.timeout(60000);
+
+        // Execute the actual test
+        runTest(test, done);
       });
+    });
+
+    // Clean up the test fixture
+    tests = [];
   });
 }
 
+/**
+ *  Look for a test asset, and if it exists, copy it to the
+ *  test context at the given location.
+ **/
+function copyAssetToContext(src, dest, context) {
+  var sourceAsset = path.join(testDir, src);
+  var targetAsset = path.join(context.dir, dest);
+
+  if (!fs.existsSync(sourceAsset)) {
+    // The source asset requested is missing
+    throw new Error("The test asset is missing");
+  }
+
+  // Attempt to copy the asset
+  fs.copySync(sourceAsset, targetAsset);
+
+  if (!fs.existsSync(targetAsset)) {
+    // The target asset was not copied successfully
+    throw new Error("The test asset could not be copied");
+  }
+}
+
 var savor = {
+  src: function(name) {
+    return require(path.join(srcDir, name));
+  },
+  capture: function(stream) {
+      var original  = stream.write;
+      var content   = '';
+
+      stream.write = function(string) {
+        // Keep track of the stream's data
+        content += string.toString();
+        return true;
+      }
+
+      return {
+        release: () => { stream.write = original; return content; }
+      }
+  },
   add: function(name, exec) {
     addTest(name, exec);
     return savor;
   },
-  run: function(name) {
-    runAllTests(name);
+  run: function(name, done) {
+    runAllTests(name, done);
+  },
+  allTests: tests,
+  reset: function() { tests = [] },
+  addAsset: function(src, dest, context) {
+    copyAssetToContext(src, dest, context);
   }
 }
 
