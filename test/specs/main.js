@@ -56,7 +56,7 @@ describe("Running Tests", () => {
   });
 
   it("should be able to capture a stream", function(done) {
-    let stream = process.stdout;
+    var stream = process.stdout;
     var stdout = savor.capture(stream);
     stream.write('just a test');
     var content = stdout.release();

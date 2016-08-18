@@ -67,9 +67,7 @@ function runTest(test, done) {
   var context = {
     expect: chai.expect,
     assert: chai.assert,
-    http: supertest,
-    stub: sinon.stub,
-    chai: chai
+    stub: sinon.stub
   };
 
   beforeEach(test, context, function() {

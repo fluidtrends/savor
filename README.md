@@ -14,6 +14,20 @@
 [![Author](https://img.shields.io/badge/say%20hi-%40idancali-green.svg)](https://twitter.com/idancali)
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fidancali%2Fsavor&via=idancali&text=Add%20more%20flavor%20to%20your%20Node%20module%20%28test%2C%20coverage%2C%20analysis%29.&hashtags=savor%2C%20opensource&)
 
+# Overview
+
+Savor gives you all you need to write amazing tests, right out of the box, all in one place: a test framework, BDD and TDD assertions, stubbing/mocking, code coverage and static analysis.
+
+Savor uses the following Open-Source libraries to make that happen:
+
+ - [Mocha](https://mochajs.org) as the test framework
+ - [Chai](http://chaijs.com) as the assertion library (both for BDD and for TDD)
+ - [Sinon](http://sinonjs.org) as the stubbing library
+ - [Istanbul](http://gotwarlost.github.io/istanbul) as the code coverage tool
+ - [ESLint](http://eslint.org) as the static analyzer
+
+Savor also gives you the ability to plug your tests into your continuously integration process via [Coveralls](https://coveralls.io) for code coverage and [Codacy](https://www.codacy.com) for code analysis.
+
 # Installation
 
 **STEP 1**
@@ -49,13 +63,18 @@ If you'd like more granularity over your scripts you can also install single Sav
 
 **STEP 3**
 
-Make sure your code resides under a ```src``` directory and all your tests under a ```test``` directory, like so:
+Make sure your code resides under a ```src``` directory and all your specs under a ```test/specs``` directory:
 
 ```javascript
 package.json
 node_modules/
 src/
+  main.js
 test/
+  assets/
+    somefile.json
+  specs/
+    main.js
 ```
 
 # Adding Tests
@@ -65,7 +84,7 @@ You can now write tests under your ```test``` directory, like so:
 ```javascript
 var savor = require('savor');
 
-savor.add('this is a test', function(done, context) {
+savor.add('this is a test', function(context, done) {
   console.log('My test is running');
 
   // The test finished successfully
@@ -78,6 +97,25 @@ savor.add('this is a test', function(done, context) {
 // You can keep adding tests here with savor.add
 
 run();
+```
+
+# The Savor Context
+
+When you add a test, you are given a ```context```:
+
+```javascript
+savor.add('this is a test', function(context, done) {
+  ...
+}).
+```
+
+This ```context``` contains the following:
+
+```javascript
+  context.expect // Using Chai
+  context.assert // Using Chai
+  context.stub   // Using Sinon
+  context.dir    // The temporary test location
 ```
 
 # Running Tests
@@ -169,9 +207,9 @@ Next, write your test in ```test/main.js```:
 var savor = require('savor');
 var main  = require('../src/main');
 
-savor.add('should create a valid greeting', function(test, done) {
+savor.add('should create a valid greeting', function(context, done) {
   var greeting = main.createGreeting('Dan');
-  test.expect(greeting).to.equal("Hello, Dan");
+  context.expect(greeting).to.equal("Hello, Dan");
   done && done();
 }).
 
