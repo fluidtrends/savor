@@ -1,13 +1,13 @@
-var testBin            = "./node_modules/savor/node_modules/.bin/mocha";
-var coverageBin        = "./node_modules/savor/node_modules/.bin/istanbul";
-var lintBin            = "./node_modules/savor/node_modules/.bin/eslint";
+var testBin            = "./node_modules/.bin/mocha";
+var coverageBin        = "./node_modules/.bin/istanbul";
+var lintBin            = "./node_modules/.bin/eslint";
 
-var coverallsBin       = "cat ./coverage/lcov.info | ./node_modules/savor/node_modules/.bin/coveralls";
-var codacyBin          = "cat ./coverage/lcov.info | ./node_modules/savor/node_modules/.bin/codacy-coverage";
+var coverallsBin       = "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls";
+var codacyBin          = "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage";
 var rmBin              = "rm";
 var testArgs           = ['--recursive', 'test/specs/**/*.js'];
-var coverageLocalArgs  = ['cover', './node_modules/savor/node_modules/.bin/_mocha', '--', 'test/specs/**/*.js'];
-var coverageArgs       = ['cover', './node_modules/savor/node_modules/.bin/_mocha', '--report', 'lcovonly', '--', 'test/specs/**/*.js', '-R', 'spec'];
+var coverageLocalArgs  = ['cover', './node_modules/.bin/_mocha', '--', 'test/specs/**/*.js'];
+var coverageArgs       = ['cover', './node_modules/.bin/_mocha', '--report', 'lcovonly', '--', 'test/specs/**/*.js', '-R', 'spec'];
 var coverallsArgs      = [];
 var codacyArgs         = [];
 var removeCoverageArgs = ['-rf', './coverage'];
