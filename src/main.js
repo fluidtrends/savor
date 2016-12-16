@@ -11,6 +11,12 @@ var supertest = require('supertest');
 chai.use(require('chai-http'));
 
 /**
+ *  Enable smart promise assertions
+ **/
+var chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
+
+/**
  *  For all our mocking needs as well as stubbing needs, we will
  *  want to make use of Sinon.JS as our framework of choice for these needs.
  **/
