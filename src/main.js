@@ -61,6 +61,29 @@ function beforeEach(test, context, done) {
 }
 
 /**
+ *  Test a promise for failure
+ **/
+function promiseShouldFail(promise, done, handler) {
+    promise.then(result => done(new Error('Promise expected to fail'))).
+    catch(error => {
+        handler(error)
+        done()
+    }).
+    catch(error => done(error))
+}
+
+/**
+ *  Test a promise for success
+ **/
+function promiseShouldSucceed(promise, done, handler) {
+    promise.then(result => {
+        handler(result)
+        done()
+    }).
+    catch(error => done(error))
+}
+
+/**
  *  Clean up after each test
  **/
 function afterEach(test, context) {
@@ -172,6 +195,8 @@ var savor = {
     run: function(name, done) {
         runAllTests(name, done);
     },
+    promiseShouldSucceed: promiseShouldSucceed,
+    promiseShouldFail: promiseShouldFail,
     allTests: tests,
     reset: function() {
         tests = []
