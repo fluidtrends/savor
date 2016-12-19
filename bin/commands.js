@@ -1,60 +1,75 @@
-var testBin            = "./node_modules/.bin/mocha";
-var coverageBin        = "./node_modules/.bin/istanbul";
-var lintBin            = "./node_modules/.bin/eslint";
+var testBin = "./node_modules/.bin/mocha";
+var coverageBin = "./node_modules/.bin/istanbul";
+var lintBin = "./node_modules/.bin/eslint";
 
-var coverallsBin       = "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls";
-var codacyBin          = "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage";
-var rmBin              = "rm";
-var testArgs           = ['--recursive', 'test/specs/**/*.js'];
-var coverageLocalArgs  = ['cover', './node_modules/.bin/_mocha', '--', 'test/specs/**/*.js'];
-var coverageArgs       = ['cover', './node_modules/.bin/_mocha', '--report', 'lcovonly', '--', 'test/specs/**/*.js', '-R', 'spec'];
-var coverallsArgs      = [];
-var codacyArgs         = [];
+var coverallsBin = "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls";
+var codacyBin = "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage";
+var codeclimateBin = "cat ./coverage/lcov.info | ./node_modules/.bin/codeclimate-test-reporter";
+var rmBin = "rm";
+var testArgs = ['--recursive', 'test/specs/**/*.js'];
+var coverageLocalArgs = ['cover', './node_modules/.bin/_mocha', '--', 'test/specs/**/*.js'];
+var coverageArgs = ['cover', './node_modules/.bin/_mocha', '--report', 'lcovonly', '--', 'test/specs/**/*.js', '-R', 'spec'];
+var coverallsArgs = [];
+var codacyArgs = [];
+var codeclimateArgs = [];
 var removeCoverageArgs = ['-rf', './coverage'];
-var lintArgs           = ['src/**/*.js', 'test/specs/**/*.js'];
+var lintArgs = ['src/**/*.js', 'test/specs/**/*.js'];
 
 var test = [{
-  bin: testBin,
-  args: testArgs
+    bin: testBin,
+    args: testArgs
 }]
 
 var coverage = [{
-  bin: coverageBin,
-  args: coverageLocalArgs
+    bin: coverageBin,
+    args: coverageLocalArgs
 }]
 
 var lint = [{
-  bin: lintBin,
-  args: lintArgs
+    bin: lintBin,
+    args: lintArgs
 }]
 
 var coveralls = [
-{
-  bin: coverageBin,
-  args: coverageArgs
+    {
+        bin: coverageBin,
+        args: coverageArgs
 }, {
-  bin: coverallsBin,
-  args: coverallsArgs
+        bin: coverallsBin,
+        args: coverallsArgs
 }, {
-  bin: rmBin,
-  args: removeCoverageArgs
+        bin: rmBin,
+        args: removeCoverageArgs
+}]
+
+var codeclimate = [
+    {
+        bin: coverageBin,
+        args: coverageArgs
+}, {
+        bin: codeclimateBin,
+        args: codeclimateArgs
+}, {
+        bin: rmBin,
+        args: removeCoverageArgs
 }]
 
 var codacy = [{
-  bin: codacyBin,
-  args: codacyArgs
+    bin: codacyBin,
+    args: codacyArgs
 }, {
-  bin: codacyBin,
-  args: codacyArgs
+    bin: codacyBin,
+    args: codacyArgs
 }, {
-  bin: rmBin,
-  args: removeCoverageArgs
+    bin: rmBin,
+    args: removeCoverageArgs
 }]
 
 module.exports = {
-  test: test,
-  coverage: coverage,
-  lint: lint,
-  coveralls: coveralls,
-  codacy: codacy
+    test: test,
+    coverage: coverage,
+    lint: lint,
+    coveralls: coveralls,
+    codacy: codacy,
+    codeclimate: codeclimate
 }
