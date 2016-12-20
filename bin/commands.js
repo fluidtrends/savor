@@ -1,13 +1,13 @@
 var testBin = "./node_modules/.bin/mocha";
-var coverageBin = "./node_modules/.bin/istanbul";
+var coverageBin = "./node_modules/.bin/babel-node";
 var lintBin = "./node_modules/.bin/eslint";
 var coverallsBin = "sh";
 var codacyBin = "sh";
 var codeclimateBin = "sh";
 var rmBin = "rm";
 var testArgs = ['--require', 'react-native-mock/mock', '--compilers', 'js:babel-core/register', '--recursive', 'test/specs/**/*.js'];
-var coverageLocalArgs = ['./node_modules/.bin/babel-node', './node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --require react-native-mock/mock --report lcovonly test/specs/**/*.js'];
-var coverageArgs = ['cover', './node_modules/.bin/_mocha', '--report', 'lcovonly', '--', 'test/specs/**/*.js', '-R', 'spec'];
+var coverageLocalArgs = ['./node_modules/.bin/istanbul', 'cover', './node_modules/.bin/_mocha', '--', '--compilers', '--require', 'react-native-mock/mock', '--report', 'lcovonly', 'test/specs/**/*.js'];
+var coverageArgs = ['./node_modules/.bin/istanbul', 'cover', './node_modules/.bin/_mocha', '--', '--compilers', '--require', 'react-native-mock/mock', '--report', 'lcovonly', 'test/specs/**/*.js'];
 var coverallsArgs = ['-c', 'cat ./coverage/lcov.info | ./node_modules/.bin/coveralls'];
 var codacyArgs = ['-c', 'cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage'];
 var codeclimateArgs = ['-c', './node_modules/.bin/codeclimate-test-reporter < ./coverage/lcov.info'];
