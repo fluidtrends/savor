@@ -9,8 +9,7 @@
 
 [![Version](https://img.shields.io/npm/v/savor.svg)](https://www.npmjs.com/package/savor)
 [![Build Status](https://travis-ci.org/idancali/savor.svg?branch=master)](https://travis-ci.org/idancali/savor)
-[![Coverage Status](https://coveralls.io/repos/github/idancali/savor/badge.svg?branch=master)](https://coveralls.io/github/idancali/savor?branch=master)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1b29488825be41f0874f45f8b428b753)](https://www.codacy.com/app/dancali/savor?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=idancali/savor&amp;utm_campaign=Badge_Grade)
+[![CC](https://codeclimate.com/github/idancali/savor/badges/gpa.svg)](https://codeclimate.com/github/idancali/savor)
 [![Author](https://img.shields.io/badge/say%20hi-%40idancali-green.svg)](https://twitter.com/idancali)
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fidancali%2Fsavor&via=idancali&text=Add%20more%20flavor%20to%20your%20Node%20module%20%28test%2C%20coverage%2C%20analysis%29.&hashtags=savor%2C%20opensource&)
 
@@ -26,10 +25,15 @@ Savor uses the following Open-Source libraries to make that happen:
  - [Istanbul](http://gotwarlost.github.io/istanbul) as the code coverage tool
  - [ESLint](http://eslint.org) as the static analyzer
 
-Savor also gives you the ability to plug your tests into your continuous integration process via [Coveralls](https://coveralls.io) for code coverage and [Codacy](https://www.codacy.com) for code analysis. To integrate with your CI tool, make sure you add a post-execution script that runs the following:
+You also get React and React Native testing out of the box, using:
+
+ - [Enzyme](http://airbnb.io/enzyme/)
+
+Savor also gives you the ability to plug your tests into your continuous integration process via [Coveralls](https://coveralls.io) for code coverage and [Codacy](https://www.codacy.com) for code analysis. It also support [CodeClimate](https://codeclimate.com) which is a tool that offers both static analysis and code coverage. To integrate with your CI tool, make sure you add a post-execution script that runs the following:
 ```
 npm run coveralls
 npm run codacy
+npm run codeclimate
 ```
 
 For [Travis CI](https://travis-ci.org) for example, this is what your ```.travis.yml``` file might look like:
@@ -40,6 +44,7 @@ node_js:
 after_success:
   - npm run coveralls
   - npm run codacy
+  - npm run codeclimate
 ```
 
 # Installation
@@ -72,6 +77,7 @@ If you'd like more granularity over your scripts you can also install single Sav
   "cover": "savor cover",
   "coveralls": "savor coveralls",
   "codacy": "savor codacy"
+  "codeclimate": "savor codeclimate"
 }
 ```
 
@@ -105,7 +111,7 @@ savor.add('this is a test', function(context, done) {
   done && done();
 
   // Or throw an error if the test fails
-  // done && done(new Error('ddd'));
+  // done && done(new Error('oops'));
 }).
 
 // You can keep adding tests here with savor.add
@@ -126,10 +132,13 @@ savor.add('this is a test', function(context, done) {
 This ```context``` contains the following:
 
 ```javascript
-  context.expect // Using Chai
-  context.assert // Using Chai
-  context.stub   // Using Sinon
-  context.dir    // The temporary test location
+  context.expect  // Using Chai
+  context.assert  // Using Chai
+  context.stub    // Using Sinon
+  context.shallow // Using Enzyme
+  context.mount   // Using Enzyme
+  context.render  // Using Enzyme
+  context.dir     // The temporary test location
 ```
 
 # Running Tests
