@@ -10,6 +10,7 @@
 [![Version](https://img.shields.io/npm/v/savor.svg)](https://www.npmjs.com/package/savor)
 [![Build Status](https://travis-ci.org/idancali/savor.svg?branch=master)](https://travis-ci.org/idancali/savor)
 [![CC](https://codeclimate.com/github/idancali/savor/badges/gpa.svg)](https://codeclimate.com/github/idancali/savor)
+[![TC](https://codeclimate.com/github/idancali/savor/badges/coverage.svg)](https://codeclimate.com/github/idancali/savor)
 [![Author](https://img.shields.io/badge/say%20hi-%40idancali-green.svg)](https://twitter.com/idancali)
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fidancali%2Fsavor&via=idancali&text=Add%20more%20flavor%20to%20your%20Node%20module%20%28test%2C%20coverage%2C%20analysis%29.&hashtags=savor%2C%20opensource&)
 
