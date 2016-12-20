@@ -1,7 +1,6 @@
 var testBin = "./node_modules/.bin/mocha";
 var coverageBin = "./node_modules/.bin/istanbul";
 var lintBin = "./node_modules/.bin/eslint";
-
 var coverallsBin = "sh";
 var codacyBin = "sh";
 var codeclimateBin = "sh";
@@ -44,14 +43,14 @@ var coveralls = [
 
 var codeclimate = [
     {
-        //         bin: coverageBin,
-        //         args: coverageArgs
-        // }, {
+        bin: coverageBin,
+        args: coverageArgs
+}, {
         bin: codeclimateBin,
         args: codeclimateArgs
-            // }, {
-            //         bin: rmBin,
-            //         args: removeCoverageArgs
+}, {
+        bin: rmBin,
+        args: removeCoverageArgs
 }]
 
 var codacy = [{
