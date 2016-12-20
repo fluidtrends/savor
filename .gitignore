@@ -2,3 +2,4 @@
 pods
 node_modules
 coverage
+*.log
