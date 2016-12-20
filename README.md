@@ -82,6 +82,15 @@ If you'd like more granularity over your scripts you can also install single Sav
 }
 ```
 
+Make sure you also configure Babel correctly in your ```package.json```:
+
+```javascript
+"babel": {
+  "plugins": ["transform-react-jsx"],
+  "presets": ["react-native", {}]
+}
+```
+
 **STEP 3**
 
 Make sure your code resides under a ```src``` directory and all your specs under a ```test/specs``` directory:
