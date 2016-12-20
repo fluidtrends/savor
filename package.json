@@ -1,6 +1,6 @@
 {
   "name": "savor",
-  "version": "0.2.12",
+  "version": "0.2.13",
   "description": "A simple way of adding tests to your Node module",
   "main": "index.js",
   "scripts": {
@@ -54,7 +54,7 @@
     "enzyme": "^2.6.0",
     "eslint": "^3.2.2",
     "fs-extra": "^0.30.0",
-    "istanbul": "^0.4.4",
+    "istanbul": "^1.1.0-alpha.1",
     "mocha": "^3.0.1",
     "mocha-lcov-reporter": "^1.2.0",
     "opn": "^4.0.2",
