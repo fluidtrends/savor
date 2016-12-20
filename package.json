@@ -6,9 +6,8 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha --require react-native-mock/mock --compilers js:babel-core/register --recursive test/specs/**/*.js",
     "coverage": "./node_modules/.bin/babel-node ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --require react-native-mock/mock --report lcovonly test/specs/**/*.js",
-    "coveralls": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --report lcovonly test/specs/**/*.js && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf ./coverage",
-    "codacy": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --report lcovonly test/specs/**/*.js && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage && rm -rf ./coverage",
-    "lint": "./node_modules/.bin/eslint src/**/*.js test/specs/**/*.js"
+    "codeclimate": "./node_modules/.bin/babel-node ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --require react-native-mock/mock --report lcovonly test/specs/**/*.js && ./node_modules/.bin/codeclimate-test-reporter < ./coverage/lcov.info && rm -rf ./coverage",
+    "lint": "./node_modules/.bin/eslint src/**/*.js"
   },
   "bin": {
     "savor": "bin/index.js"

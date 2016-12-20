@@ -1,0 +1,46 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/dancali/.nvm/versions/node/v5.0.0/bin/node',
+1 verbose cli   '/Users/dancali/.nvm/versions/node/v5.0.0/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'codeclimate' ]
+2 info using npm@3.3.6
+3 info using node@v5.0.0
+4 verbose run-script [ 'precodeclimate', 'codeclimate', 'postcodeclimate' ]
+5 info lifecycle savor@0.2.9~precodeclimate: savor@0.2.9
+6 silly lifecycle savor@0.2.9~precodeclimate: no script for precodeclimate, continuing
+7 info lifecycle savor@0.2.9~codeclimate: savor@0.2.9
+8 verbose lifecycle savor@0.2.9~codeclimate: unsafe-perm in lifecycle true
+9 verbose lifecycle savor@0.2.9~codeclimate: PATH: /Users/dancali/.nvm/versions/node/v5.0.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/dancali/@/idancali/idancali.dev/savor/node_modules/.bin:/Users/dancali/.nvm/versions/node/v5.0.0/bin:/Users/dancali/bin:/Users/dancali/devops/bin:/Users/dancali/.gem/ruby/2.0.0/bin:/Users/dancali/.gem/bin:/usr/local/opt/android-sdk/tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+10 verbose lifecycle savor@0.2.9~codeclimate: CWD: /Users/dancali/@/idancali/idancali.dev/savor
+11 silly lifecycle savor@0.2.9~codeclimate: Args: [ '-c',
+11 silly lifecycle   'babel-node ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --require react-native-mock/mock --report lcovonly test/specs/**/*.js && ./node_modules/.bin/codeclimate-test-reporter < ./coverage/lcov.info && rm -rf ./coverage' ]
+12 silly lifecycle savor@0.2.9~codeclimate: Returned: code: 1  signal: null
+13 info lifecycle savor@0.2.9~codeclimate: Failed to exec codeclimate script
+14 verbose stack Error: savor@0.2.9 codeclimate: `babel-node ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --require react-native-mock/mock --report lcovonly test/specs/**/*.js && ./node_modules/.bin/codeclimate-test-reporter < ./coverage/lcov.info && rm -rf ./coverage`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (/Users/dancali/.nvm/versions/node/v5.0.0/lib/node_modules/npm/lib/utils/lifecycle.js:233:16)
+14 verbose stack     at emitTwo (events.js:87:13)
+14 verbose stack     at EventEmitter.emit (events.js:172:7)
+14 verbose stack     at ChildProcess.<anonymous> (/Users/dancali/.nvm/versions/node/v5.0.0/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+14 verbose stack     at emitTwo (events.js:87:13)
+14 verbose stack     at ChildProcess.emit (events.js:172:7)
+14 verbose stack     at maybeClose (internal/child_process.js:818:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+15 verbose pkgid savor@0.2.9
+16 verbose cwd /Users/dancali/@/idancali/idancali.dev/savor
+17 error Darwin 15.6.0
+18 error argv "/Users/dancali/.nvm/versions/node/v5.0.0/bin/node" "/Users/dancali/.nvm/versions/node/v5.0.0/bin/npm" "run" "codeclimate"
+19 error node v5.0.0
+20 error npm  v3.3.6
+21 error code ELIFECYCLE
+22 error savor@0.2.9 codeclimate: `babel-node ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --require react-native-mock/mock --report lcovonly test/specs/**/*.js && ./node_modules/.bin/codeclimate-test-reporter < ./coverage/lcov.info && rm -rf ./coverage`
+22 error Exit status 1
+23 error Failed at the savor@0.2.9 codeclimate script 'babel-node ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --require react-native-mock/mock --report lcovonly test/specs/**/*.js && ./node_modules/.bin/codeclimate-test-reporter < ./coverage/lcov.info && rm -rf ./coverage'.
+23 error This is most likely a problem with the savor package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     babel-node ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --require react-native-mock/mock --report lcovonly test/specs/**/*.js && ./node_modules/.bin/codeclimate-test-reporter < ./coverage/lcov.info && rm -rf ./coverage
+23 error You can get their info via:
+23 error     npm owner ls savor
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
