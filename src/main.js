@@ -38,15 +38,6 @@ var testDir = path.join(cwdDir, 'test');
 var srcDir = path.join(cwdDir, 'src');
 
 /**
- *   Construct a default context
- **/
-var rootContext = {
-    expect: chai.expect,
-    assert: chai.assert,
-    stub: sinon.stub
-};
-
-/**
  *   Add a test to be run.
  **/
 function addTest(name, exec) {
@@ -99,11 +90,11 @@ function afterEach(test, context) {
  *  Execute a single test
  **/
 function runTest(test, done) {
-    beforeEach(test, rootContext, function() {
+    beforeEach(test, savor.context, function() {
         // Run the actual test and give the test all the tools it needs for optimal execution
-        test.exec(rootContext, function(error) {
+        test.exec(savor.context, function(error) {
             // Clean up the context
-            afterEach(test, rootContext);
+            afterEach(test, savor.context);
 
             // Finish up the test
             done && done(error)
@@ -166,6 +157,11 @@ function copyAssetToContext(src, dest, context) {
 }
 
 var savor = {
+    context: {
+        expect: chai.expect,
+        assert: chai.assert,
+        stub: sinon.stub
+    },
     src: function(name) {
         return require(path.join(srcDir, name));
     },
