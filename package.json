@@ -1,6 +1,6 @@
 {
   "name": "savor",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A simple way of adding tests to your Node module",
   "main": "index.js",
   "scripts": {
@@ -20,10 +20,6 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/idancali/savor/issues"
-  },
-  "babel": {
-    "plugins": ["transform-react-jsx"],
-    "presets": ["react-native", {}]
   },
   "keywords": [
     "bdd",

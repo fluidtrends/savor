@@ -5,6 +5,7 @@ var coverallsBin = "sh";
 var codacyBin = "sh";
 var codeclimateBin = "sh";
 var rmBin = "rm";
+var rntestArgs = ['--require', 'react-native-mock/mock', '--compilers', 'js:babel-core/register', '--recursive', 'test/specs/**/*.js'];
 var testArgs = ['--recursive', 'test/specs/**/*.js'];
 var coverageLocalArgs = ['./node_modules/.bin/istanbul', 'cover', './node_modules/.bin/_mocha', '--', '--report', 'lcovonly', 'test/specs/**/*.js'];
 var coverageArgs = ['./node_modules/.bin/istanbul', 'cover', './node_modules/.bin/_mocha', '--', '--report', 'lcovonly', 'test/specs/**/*.js'];
@@ -13,6 +14,11 @@ var codacyArgs = ['-c', 'cat ./coverage/lcov.info | ./node_modules/.bin/codacy-c
 var codeclimateArgs = ['-c', './node_modules/.bin/codeclimate-test-reporter < ./coverage/lcov.info'];
 var removeCoverageArgs = ['-rf', './coverage'];
 var lintArgs = ['src/**/*.js', 'test/specs/**/*.js'];
+
+var rntest = [{
+    bin: testBin,
+    args: rntestArgs
+}]
 
 var test = [{
     bin: testBin,
@@ -65,6 +71,7 @@ var codacy = [{
 }]
 
 module.exports = {
+    rntest: test,
     test: test,
     coverage: coverage,
     lint: lint,
