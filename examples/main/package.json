@@ -9,7 +9,8 @@
     "lint": "savor lint",
     "coverage": "savor coverage",
     "coveralls": "savor coveralls",
-    "codacy": "savor codacy"
+    "codacy": "savor codacy",
+    "codeclimate": "savor codeclimate"
   },
   "author": "I. Dan Calinescu <idancalinescu@gmail.com>",
   "license": "MIT",

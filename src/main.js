@@ -38,6 +38,15 @@ var testDir = path.join(cwdDir, 'test');
 var srcDir = path.join(cwdDir, 'src');
 
 /**
+ *   Construct a default context
+ **/
+var rootContext = {
+    expect: chai.expect,
+    assert: chai.assert,
+    stub: sinon.stub
+};
+
+/**
  *   Add a test to be run.
  **/
 function addTest(name, exec) {
@@ -90,18 +99,11 @@ function afterEach(test, context) {
  *  Execute a single test
  **/
 function runTest(test, done) {
-    // Construct a test context
-    var context = {
-        expect: chai.expect,
-        assert: chai.assert,
-        stub: sinon.stub
-    };
-
-    beforeEach(test, context, function() {
+    beforeEach(test, rootContext, function() {
         // Run the actual test and give the test all the tools it needs for optimal execution
-        test.exec(context, function(error) {
+        test.exec(rootContext, function(error) {
             // Clean up the context
-            afterEach(test, context);
+            afterEach(test, rootContext);
 
             // Finish up the test
             done && done(error)
