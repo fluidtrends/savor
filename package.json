@@ -1,6 +1,6 @@
 {
   "name": "savor",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "A simple way of adding tests to your Node module",
   "main": "index.js",
   "scripts": {

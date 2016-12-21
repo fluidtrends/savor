@@ -3,7 +3,6 @@
 var spawn = require('child_process').spawnSync
 var fs = require('fs-extra')
 var path = require('path')
-var utils = require('./utils')
 
 function cliContext (commands, dir) {
   return {
@@ -29,7 +28,7 @@ function copyResourcesToTarget(context) {
 }
 
 function cleanTargetResources(context) {
-    var allResources = resources[context.cmdName];
+    var allResources = context.resources[context.cmdName];
     if (!allResources) {
         return;
     }
@@ -45,17 +44,17 @@ function exec (commands, dir) {
 
   if (process.argv.length >= 3) {
       context.cmdName = process.argv[2]
-      context.command = context.commands[context.cmdName]
+      context.command = commands[context.cmdName]
   }
 
-  if (!command) {
+  if (!context.command) {
       process.stderr.write('Savor: invalid command\n')
       process.exit(1)
   }
 
   copyResourcesToTarget(context)
 
-  command.forEach(function(subcommand) {
+  context.command.forEach(function(subcommand) {
       spawn(subcommand.bin, subcommand.args, {
           cwd: context.cwd,
           stdio: "inherit"
@@ -65,8 +64,6 @@ function exec (commands, dir) {
   cleanTargetResources(context)
 }
 
-let cli = {
-  exec: exec
+module.exports = {
+  exec
 }
-
-module.exports = exec
