@@ -26,10 +26,6 @@ Savor uses the following Open-Source libraries to make that happen:
  - [Istanbul](http://gotwarlost.github.io/istanbul) as the code coverage tool
  - [ESLint](http://eslint.org) as the static analyzer
 
-You also get React and React Native testing out of the box, using:
-
- - [Enzyme](http://airbnb.io/enzyme/)
-
 Savor also gives you the ability to plug your tests into your continuous integration process via [Coveralls](https://coveralls.io) for code coverage and [Codacy](https://www.codacy.com) for code analysis. It also support [CodeClimate](https://codeclimate.com) which is a tool that offers both static analysis and code coverage. To integrate with your CI tool, make sure you add a post-execution script that runs the following:
 ```
 npm run coveralls
@@ -79,15 +75,6 @@ If you'd like more granularity over your scripts you can also install single Sav
   "coveralls": "savor coveralls",
   "codacy": "savor codacy"
   "codeclimate": "savor codeclimate"
-}
-```
-
-Make sure you also configure Babel correctly in your ```package.json```:
-
-```javascript
-"babel": {
-  "plugins": ["transform-react-jsx"],
-  "presets": ["react-native", {}]
 }
 ```
 
@@ -230,7 +217,8 @@ And here's how it is to test this with Savor. First, add the Savor hooks in your
   "lint": "savor lint",
   "coverage": "savor coverage",
   "coveralls": "savor coveralls",
-  "codacy": "savor codacy"
+  "codacy": "savor codacy",
+  "codeclimate": "savor codeclimate"
 }
 ```
 

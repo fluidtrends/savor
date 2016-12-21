@@ -7,13 +7,6 @@
 var chai = require('chai');
 
 /**
- *  Use helpers for testing React
- **/
-var enzyme = require('enzyme');
-var chaiEnzyme = require('chai-enzyme');
-chai.use(chaiEnzyme())
-
-/**
  *  Enable smart promise assertions
  **/
 var chaiAsPromised = require('chai-as-promised');
@@ -101,10 +94,7 @@ function runTest(test, done) {
     var context = {
         expect: chai.expect,
         assert: chai.assert,
-        stub: sinon.stub,
-        mount: enzyme.mount,
-        render: enzyme.render,
-        shallow: enzyme.shallow
+        stub: sinon.stub
     };
 
     beforeEach(test, context, function() {
