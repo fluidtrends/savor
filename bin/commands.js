@@ -14,11 +14,6 @@ var codeclimateArgs = ['-c', './node_modules/.bin/codeclimate-test-reporter < ./
 var removeCoverageArgs = ['-rf', './coverage'];
 var lintArgs = ['src/**/*.js', 'test/specs/**/*.js'];
 
-var rntest = [{
-    bin: testBin,
-    args: rntestArgs
-}]
-
 var test = [{
     bin: testBin,
     args: testArgs
