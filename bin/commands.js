@@ -5,7 +5,6 @@ var coverallsBin = "sh";
 var codacyBin = "sh";
 var codeclimateBin = "sh";
 var rmBin = "rm";
-var rntestArgs = ['--require', 'react-native-mock/mock', '--compilers', 'js:babel-core/register', '--recursive', 'test/specs/**/*.js'];
 var testArgs = ['--recursive', 'test/specs/**/*.js'];
 var coverageLocalArgs = ['./node_modules/.bin/istanbul', 'cover', './node_modules/.bin/_mocha', '--', '--report', 'lcovonly', 'test/specs/**/*.js'];
 var coverageArgs = ['./node_modules/.bin/istanbul', 'cover', './node_modules/.bin/_mocha', '--', '--report', 'lcovonly', 'test/specs/**/*.js'];
