@@ -1,25 +1,24 @@
 <p align="center">
-  <a href="https://github.com/idancali/savor">
-    <img height="256" src="https://raw.githubusercontent.com/idancali/savor/master/logo.png">
+  <a href="https://github.com/idancali/react-native-savor">
+    <img height="256" src="https://raw.githubusercontent.com/idancali/react-native-savor/master/logo.png">
   </a>
-  <p align="center"> <b> Savor </b> Adds Delicious Flavors To Your Node Module, Like Tests, Coverage and Analysis. </p>
+  <p align="center"> <b> React Native react-native-savor </b> Adds Delicious Flavors To Your React Native App, Like Tests, Coverage and Analysis. </p>
 </p>
 
-# Savor
-
-[![Version](https://img.shields.io/npm/v/savor.svg)](https://www.npmjs.com/package/savor)
-[![Build Status](https://travis-ci.org/idancali/savor.svg?branch=master)](https://travis-ci.org/idancali/savor)
-[![CC](https://codeclimate.com/github/idancali/savor/badges/gpa.svg)](https://codeclimate.com/github/idancali/savor)
-[![TC](https://codeclimate.com/github/idancali/savor/badges/coverage.svg)](https://codeclimate.com/github/idancali/savor)
+[![Version](https://img.shields.io/npm/v/react-native-savor.svg)](https://www.npmjs.com/package/react-native-savor)
+[![Build Status](https://travis-ci.org/idancali/react-native-savor.svg?branch=master)](https://travis-ci.org/idancali/react-native-savor)
+[![CC](https://codeclimate.com/github/idancali/react-native-savor/badges/gpa.svg)](https://codeclimate.com/github/idancali/react-native-savor)
+[![TC](https://codeclimate.com/github/idancali/react-native-savor/badges/coverage.svg)](https://codeclimate.com/github/idancali/react-native-savor)
 [![Author](https://img.shields.io/badge/say%20hi-%40idancali-green.svg)](https://twitter.com/idancali)
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fidancali%2Fsavor&via=idancali&text=Add%20more%20flavor%20to%20your%20Node%20module%20%28test%2C%20coverage%2C%20analysis%29.&hashtags=savor%2C%20opensource&)
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fidancali%2Freact-native-savor&via=idancali&text=Add%20more%20flavor%20to%20your%20Node%20module%20%28test%2C%20coverage%2C%20analysis%29.&hashtags=react-native-savor%2C%20opensource&)
 
 # Overview
 
-Savor gives you all you need to write amazing tests, right out of the box, all in one place: a test framework, BDD and TDD assertions, stubbing/mocking, code coverage and static analysis.
+React Native Savor gives you all you need to write amazing tests for your React Native Apps, right out of the box, all in one place: a test framework, BDD and TDD assertions, stubbing/mocking, code coverage and static analysis.
 
 Savor uses the following Open-Source libraries to make that happen:
 
+ - [Enzyme](http://airbnb.io/enzyme) as the React testing framework
  - [Mocha](https://mochajs.org) as the test framework
  - [Chai](http://chaijs.com) as the assertion library (both for BDD and for TDD)
  - [Sinon](http://sinonjs.org) as the stubbing library
@@ -48,33 +47,33 @@ after_success:
 
 **STEP 1**
 
-Add Savor to your module as a development dependency:
+Add react-native-savor to your module as a development dependency:
 
 ```javascript
-npm install --save-dev savor
+npm install --save-dev react-native-savor
 ```
 
 **STEP 2**
 
-Add Savor to your module scripts:
+Add react-native-savor to your module scripts:
 
 ```javascript
 "scripts": {
-  "savor": "savor"
+  "savor": "react-native-savor"
 }
 ```
 
-If you'd like more granularity over your scripts you can also install single Savor commands:
+If you'd like more granularity over your scripts you can also install single react-native-savor commands:
 
 ```javascript
 "scripts": {
-  "savor": "savor",
-  "test": "savor test",
-  "lint": "savor lint",
-  "cover": "savor cover",
-  "coveralls": "savor coveralls",
-  "codacy": "savor codacy"
-  "codeclimate": "savor codeclimate"
+    "savor": "react-native-savor",
+    "test": "react-native-savor test",
+    "lint": "react-native-savor lint",
+    "coverage": "react-native-savor coverage",
+    "coveralls": "react-native-savor coveralls",
+    "codacy": "react-native-savor codacy",
+    "codeclimate": "react-native-savor codeclimate"
 }
 ```
 
@@ -89,7 +88,7 @@ src/
   main.js
 test/
   assets/
-    somefile.json
+    BasicComponent.js
   specs/
     main.js
 ```
@@ -99,34 +98,30 @@ test/
 You can now write tests under your ```test``` directory, like so:
 
 ```javascript
-var savor = require('savor');
+vimport React, {
+    View,
+    Text,
+    StyleSheet
+} from 'react-native'
+import savor from '../../../..'
+import BasicComponent from '../assets/BasicComponent'
 
-savor.add('this is a test', function(context, done) {
-  console.log('My test is running');
+const TestText = (<Text>test</Text>)
+const TestComponent = (<BasicComponent/> )
 
-  // The test finished successfully
-  done && done();
-
-  // Or throw an error if the test fails
-  // done && done(new Error('oops'));
+savor.add('should mount a basic React Native component', function(context, done) {
+  const wrapper = context.shallow(TestComponent)
+  context.expect(wrapper.length).to.equal(1)
+  context.expect(wrapper).to.contain(TestText)
+  done()
 }).
 
-// You can keep adding tests here with savor.add
-
-run();
+run('My React Native Tests')
 ```
 
 # The Savor Context
 
-When you add a test, you are given a ```context```:
-
-```javascript
-savor.add('this is a test', function(context, done) {
-  ...
-}).
-```
-
-This ```context``` contains the following:
+When you add a test, you are given a ```context``` that contains the following:
 
 ```javascript
   context.expect  // Using Chai
@@ -146,19 +141,7 @@ You can now simply run your tests like so:
 npm test
 ```
 
-or like this:
-
-```javascript
-npm run test
-```
-
-or even like this:
-
-```javascript
-npm run savor test
-```
-
-![Example](https://raw.githubusercontent.com/idancali/savor/master/examples/example.main.1.gif)
+![Example](https://raw.githubusercontent.com/idancali/react-native-savor/master/examples/example.main.1.gif)
 
 # Test Coverage
 
@@ -168,14 +151,6 @@ You can check your coverage like this:
 npm run coverage
 ```
 
-or like this:
-
-```javascript
-npm run savor coverage
-```
-
-![Example](https://raw.githubusercontent.com/idancali/savor/master/examples/example.main.3.gif)
-
 # Static Analysis
 
 You can lint your code like this:
@@ -183,61 +158,6 @@ You can lint your code like this:
 ```javascript
 npm run lint
 ```
-
-or like this:
-
-```javascript
-npm run savor lint
-```
-
-![Example](https://raw.githubusercontent.com/idancali/savor/master/examples/example.main.2.gif)
-
-# Working Example
-
-[Take a look at the example](https://github.com/idancali/savor/tree/master/examples/main) for more details on how to integrate Savor within your module.
-
-In our example, we have a simple module in ```src/main.js``` that generates a greeting, like so:
-
-```javascript
-var main = {
-  createGreeting: function(name) {
-    return "Hello, " + name;
-  }
-}
-
-module.exports = main;
-```
-
-And here's how it is to test this with Savor. First, add the Savor hooks in your ```scripts``` field:
-
-```javascript
-"scripts": {
-  "savor": "savor",
-  "test": "savor test",
-  "lint": "savor lint",
-  "coverage": "savor coverage",
-  "coveralls": "savor coveralls",
-  "codacy": "savor codacy",
-  "codeclimate": "savor codeclimate"
-}
-```
-
-Next, write your test in ```test/main.js```:
-
-```javascript
-var savor = require('savor');
-var main  = require('../src/main');
-
-savor.add('should create a valid greeting', function(context, done) {
-  var greeting = main.createGreeting('Dan');
-  context.expect(greeting).to.equal("Hello, Dan");
-  done && done();
-}).
-
-run('Greeting Tests');
-```
-
-Then simply [run your tests](#running-tests), [check your coverage](#test-coverage) and [analyze your code](#static-analysis) as documented above.
 
 Enjoy!
 
@@ -249,7 +169,7 @@ Copyright (c) 2016 I. Dan Calinescu
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
 
- https://raw.githubusercontent.com/idancali/savor/master/LICENSE
+ https://raw.githubusercontent.com/idancali/react-native-savor/master/LICENSE
 
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,

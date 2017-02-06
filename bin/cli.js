@@ -40,6 +40,7 @@ function cleanTargetResources(context) {
 }
 
 function exec (commands, dir) {
+
   let context = cliContext(commands, dir)
 
   if (process.argv.length >= 3) {

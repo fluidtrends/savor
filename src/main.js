@@ -6,6 +6,7 @@
  **/
 var chai = require('chai');
 
+
 /**
  *  Enable smart promise assertions
  **/
@@ -160,7 +161,8 @@ var savor = {
     context: {
         expect: chai.expect,
         assert: chai.assert,
-        stub: sinon.stub
+        stub: sinon.stub,
+        spy: sinon.spy
     },
     src: function(name) {
         return require(path.join(srcDir, name));
