@@ -52,6 +52,7 @@ function addTest(name, exec) {
  *  Setup before each test
  **/
 function beforeEach(test, context, done) {
+    context.clock = sinon.useFakeTimers();
     context.dir = tmp.dirSync().name;
     process.chdir(context.dir);
     done && done();
@@ -84,6 +85,7 @@ function promiseShouldSucceed(promise, done, handler) {
  *  Clean up after each test
  **/
 function afterEach(test, context) {
+    context.clock.restore();
     fs.removeSync(context.dir);
 }
 
