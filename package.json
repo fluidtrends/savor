@@ -1,13 +1,13 @@
 {
   "name": "savor",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "A simple way of adding tests to your Node modules",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --recursive test/specs/**/*.js",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --report lcovonly test/specs/**/*.js",
     "lint": "./node_modules/.bin/standard src/**/*.js test/**/*.js",
-    "doc": "./node_modules/.bin/esdoc"
+    "docs": "./node_modules/.bin/esdoc"
   },
   "bin": {
     "savor": "bin/index.js"
