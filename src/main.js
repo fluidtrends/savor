@@ -161,7 +161,8 @@ var savor = {
         expect: chai.expect,
         assert: chai.assert,
         stub: sinon.stub,
-        spy: sinon.spy
+        spy: sinon.spy,
+        clock: sinon.useFakeTimers
     },
     src: function(name) {
         return require(path.join(srcDir, name));
