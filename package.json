@@ -1,6 +1,6 @@
 {
   "name": "savor",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple way of adding tests to your Node modules",
   "main": "index.js",
   "scripts": {
@@ -39,13 +39,13 @@
     "codeclimate-test-reporter": "^0.4.0",
     "coveralls": "^2.11.12",
     "esdoc": "^1.0.4",
-    "nyc": "^15.0.0",
     "esdoc-standard-plugin": "^1.0.0",
     "fs-extra": "^0.30.0",
     "mocha": "^4.0.1",
     "mocha-lcov-reporter": "^1.2.0",
+    "nyc": "^15.0.0",
     "opn": "^4.0.2",
-    "sinon": "^1.17.5",
+    "sinon": "^8.1.1",
     "standard": "^10.0.3",
     "tmp": "0.0.28"
   }
