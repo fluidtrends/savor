@@ -162,6 +162,8 @@ var savor = {
         assert: chai.assert,
         stub: sinon.stub,
         replace: sinon.replace,
+        replaceGetter: sinon.replaceGetter,
+        replaceSetter: sinon.replaceSetter,
         spy: sinon.spy,
         clock: sinon.useFakeTimers
     },
