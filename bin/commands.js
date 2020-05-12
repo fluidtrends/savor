@@ -1,5 +1,5 @@
 var testBin = "./node_modules/.bin/mocha";
-var testArgs = ['--recursive', 'test/specs/**/*.js'];
+var testArgs = ['--recursive', 'test/specs/**/*.ts', '--require', 'ts-node/register'];
 
 var coverageBin = "./node_modules/.bin/nyc";
 var coverageLocalArgs = ['--reporter=lcov', 'npm', 'run', 'test'];
