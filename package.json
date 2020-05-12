@@ -1,6 +1,6 @@
 {
   "name": "savor",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A simple way of adding tests to your Node modules",
   "scripts": {
     "test": "./node_modules/.bin/mocha --recursive test/specs/**/*.js",
@@ -12,7 +12,8 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
-    "lib/**/*"
+    "lib/**/*",
+    "bin/**/*"
   ],
   "repository": {
     "type": "git",
