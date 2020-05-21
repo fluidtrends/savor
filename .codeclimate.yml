@@ -52,6 +52,7 @@ exclude_patterns:
 - "**/*.json"
 - "**/*.md"
 - "**/*.png"
+- "**/*.txt"
 - "**/*.gif"
 - "**/*.d.ts"
 - "**/*.js.map"
