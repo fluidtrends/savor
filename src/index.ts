@@ -1,98 +1,61 @@
-'use strict'
+import chai from 'chai'
+import chaiAsPromised from 'chai-as-promised'
+import sinon from 'sinon'
+import path from 'path'
+import fs from 'fs-extra'
+import tmp from 'tmp'
+import {
+    Context,
+    ResultError,
+    Result,
+    Completion
+} from './types'
 
-/**
- *  We're using Chai.JS as our BDD assertion library, and specifically,
- *  we want to write our specs using the expect assert style.
- **/
-var chai = require('chai');
-
-/**
- *  Enable smart promise assertions
- **/
-var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 
-/**
- *  For all our mocking needs as well as stubbing needs, we will
- *  want to make use of Sinon.JS as our framework of choice for these needs.
- **/
-var sinon = require('sinon');
-
-/**
- *  General-purpose library dependencies for tasks such as file I/O
- **/
-var path = require('path');
-var fs = require('fs-extra');
-var tmp = require('tmp');
-
-/**
- *  All the tests we want to run.
- **/
-var tests = [];
-
-/**
- *  Directories of interest
- **/
+var tests: any[] = [];
 var cwdDir = process.cwd();
 var testDir = path.join(cwdDir, 'test');
-var srcDir = path.join(cwdDir, 'src');
+var srcDir = path.join(cwdDir, 'lib');
 
-/**
- *   Add a test to be run.
- **/
-function addTest(name, exec) {
+function addTest(name: string, exec?: any) {
     tests.push({
         name: name,
         exec: exec
     });
 }
 
-/**
- *  Setup before each test
- **/
-function beforeEach(test, context, done) {
+function beforeEach(test: string, context: Context, done: Completion) {
     context.dir = tmp.dirSync().name;
     process.chdir(context.dir);
     done && done();
 }
 
-/**
- *  Test a promise for failure
- **/
-function promiseShouldFail(promise, done, handler) {
-    promise.then(result => done(new Error('Promise expected to fail'))).
-    catch(error => {
+function promiseShouldFail(promise: Promise<any>, done: Completion, handler: ResultError) {
+    promise.then(() => done(new Error('Promise expected to fail'))).
+    catch((error: Error) => {
         handler(error)
         done()
     }).
-    catch(error => done(error))
+    catch((error: Error) => done(error))
 }
 
-/**
- *  Test a promise for success
- **/
-function promiseShouldSucceed(promise, done, handler) {
-    promise.then(result => {
+function promiseShouldSucceed(promise: Promise<any>, done: Completion, handler: Result) {
+    promise.then((result: any) => {
         handler(result)
         done()
     }).
-    catch(error => done(error))
+    catch((error: Error) => done(error))
 }
 
-/**
- *  Clean up after each test
- **/
-function afterEach(test, context) {
+function afterEach(test: any, context: Context) {
     fs.removeSync(context.dir);
 }
 
-/**
- *  Execute a single test
- **/
-function runTest(test, done) {
+function runTest(test: any, done: Completion) {
     beforeEach(test, savor.context, function() {
         // Run the actual test and give the test all the tools it needs for optimal execution
-        test.exec(savor.context, function(error) {
+        test.exec(savor.context, function(error: Error) {
             // Clean up the context
             afterEach(test, savor.context);
 
@@ -102,17 +65,14 @@ function runTest(test, done) {
     });
 }
 
-/**
- *  We look at all our tests and describe them here and set them
- *  up so as to pass the execution over to the test framework.
- **/
-function runAllTests(name, allDone) {
+function runAllTests(name: any, allDone?: any) {
 
     // We're going to create a single, flat list of scenarios
     describe(name, function() {
 
         after(function() {
             // Tell the caller when all tests have finished running
+            tmp.setGracefulCleanup();
             allDone && allDone();
         });
 
@@ -134,13 +94,9 @@ function runAllTests(name, allDone) {
     });
 }
 
-/**
- *  Look for a test asset, and if it exists, copy it to the
- *  test context at the given location.
- **/
-function copyAssetToContext(src, dest, context) {
-    var sourceAsset = path.join(testDir, src);
-    var targetAsset = path.join(context.dir, dest);
+function copyAssetToContext(src: any, dest: any, context: Context) {
+    var sourceAsset = path.resolve(testDir, src);
+    var targetAsset = path.resolve(context.dir, dest);
 
     if (!fs.existsSync(sourceAsset)) {
         // The source asset requested is missing
@@ -149,14 +105,14 @@ function copyAssetToContext(src, dest, context) {
 
     // Attempt to copy the asset
     fs.copySync(sourceAsset, targetAsset);
-
+    
     if (!fs.existsSync(targetAsset)) {
         // The target asset was not copied successfully
         throw new Error("The test asset could not be copied");
     }
 }
 
-var savor = {
+const savor = {
     context: {
         expect: chai.expect,
         assert: chai.assert,
@@ -165,16 +121,17 @@ var savor = {
         replaceGetter: sinon.replaceGetter,
         replaceSetter: sinon.replaceSetter,
         spy: sinon.spy,
+        dir: process.cwd(),
         clock: sinon.useFakeTimers
-    },
-    src: function(name) {
+    } as Context,
+    src: function(name: string) {
         return require(path.join(srcDir, name));
     },
-    capture: function(stream) {
+    capture: function(stream: any) {
         var original = stream.write;
         var content = '';
 
-        stream.write = function(string) {
+        stream.write = function(string: string) {
             // Keep track of the stream's data
             content += string.toString();
             return true;
@@ -187,11 +144,11 @@ var savor = {
             }
         }
     },
-    add: function(name, exec) {
+    add: function(name: any, exec?: any) {
         addTest(name, exec);
         return savor;
     },
-    run: function(name, done) {
+    run: function(name: any, done?: Completion) {
         runAllTests(name, done);
     },
     promiseShouldSucceed: promiseShouldSucceed,
@@ -200,9 +157,10 @@ var savor = {
     reset: function() {
         tests = []
     },
-    addAsset: function(src, dest, context) {
+    addAsset: function(src: any, dest: any, context: any) {
         copyAssetToContext(src, dest, context);
     }
 }
 
-module.exports = savor;
+export * from './types'
+export default savor
