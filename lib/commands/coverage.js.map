@@ -1,0 +1,1 @@
+{"version":3,"file":"coverage.js","sourceRoot":"","sources":["../../src/commands/coverage.ts"],"names":[],"mappings":";;;AAIa,QAAA,GAAG,GAAG;IACf,GAAG,EAAE,yBAAyB;IAC9B,IAAI,EAAE;QACF,iBAAiB;QACjB,KAAK;QACL,KAAK;QACL,MAAM;KACT;CACO,CAAA;AAEC,QAAA,OAAO,GAAG;IACnB,GAAG,EAAE,MAAM;IACX,IAAI,EAAE;QACF,iCAAiC;KACpC;CACO,CAAA"}

@@ -1,10 +1,42 @@
+version: "2"
+checks:
+  argument-count:
+    config:
+      threshold: 4
+  complex-logic:
+    config:
+      threshold: 4
+  file-lines:
+    config:
+      threshold: 300
+  method-complexity:
+    config:
+      threshold: 30
+  method-count:
+    config:
+      threshold: 50
+  method-lines:
+    config:
+      threshold: 50
+  nested-control-flow:
+    config:
+      threshold: 4
+  return-statements:
+    config:
+      threshold: 10
+  similar-code:
+    config:
+      threshold: 2
+  identical-code:
+    config:
+      threshold: 2
 engines:
   eslint:
-    enabled: true
+    enabled: false
   csslint:
-    enabled: true
+    enabled: false
   duplication:
-    enabled: true
+    enabled: false
     checks:
       Similar code:
         enabled: false
@@ -13,8 +45,18 @@ engines:
       - javascript
 ratings:
   paths:
-  - src/**
-exclude_paths:
-- test/**/*
-- bin/**/*
-- examples/**/*
+  - "src/**/*.ts"
+  - "test/specs/**/*.ts"
+exclude_patterns:
+- "**/*.js"
+- "**/*.json"
+- "**/*.md"
+- "**/*.png"
+- "**/*.gif"
+- "**/*.d.ts"
+- "**/*.js.map"
+- "**/*.yml"
+- ".*"
+- .github/
+- assets/
+- lib/

@@ -5,6 +5,7 @@
     "strict": true,             
     "jsx": "preserve",     
     "sourceMap": true,
+    "resolveJsonModule": true,
     "allowJs": true,
     "declaration": true,         
     "esModuleInterop": true,                 

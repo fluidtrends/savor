@@ -16,9 +16,9 @@ chai.use(chaiAsPromised);
 var tests: any[] = [];
 var cwdDir = process.cwd();
 var testDir = path.join(cwdDir, 'test');
-var srcDir = path.join(cwdDir, 'src');
+var srcDir = path.join(cwdDir, 'lib');
 
-function addTest(name: string, exec: any) {
+function addTest(name: string, exec?: any) {
     tests.push({
         name: name,
         exec: exec
@@ -65,13 +65,14 @@ function runTest(test: any, done: Completion) {
     });
 }
 
-function runAllTests(name: any, allDone: any) {
+function runAllTests(name: any, allDone?: any) {
 
     // We're going to create a single, flat list of scenarios
     describe(name, function() {
 
         after(function() {
             // Tell the caller when all tests have finished running
+            tmp.setGracefulCleanup();
             allDone && allDone();
         });
 
@@ -94,8 +95,8 @@ function runAllTests(name: any, allDone: any) {
 }
 
 function copyAssetToContext(src: any, dest: any, context: Context) {
-    var sourceAsset = path.join(testDir, src);
-    var targetAsset = path.join(context.dir, dest);
+    var sourceAsset = path.resolve(testDir, src);
+    var targetAsset = path.resolve(context.dir, dest);
 
     if (!fs.existsSync(sourceAsset)) {
         // The source asset requested is missing
@@ -104,7 +105,7 @@ function copyAssetToContext(src: any, dest: any, context: Context) {
 
     // Attempt to copy the asset
     fs.copySync(sourceAsset, targetAsset);
-
+    
     if (!fs.existsSync(targetAsset)) {
         // The target asset was not copied successfully
         throw new Error("The test asset could not be copied");
@@ -143,11 +144,11 @@ const savor = {
             }
         }
     },
-    add: function(name: any, exec: any) {
+    add: function(name: any, exec?: any) {
         addTest(name, exec);
         return savor;
     },
-    run: function(name: any, done: Completion) {
+    run: function(name: any, done?: Completion) {
         runAllTests(name, done);
     },
     promiseShouldSucceed: promiseShouldSucceed,

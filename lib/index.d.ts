@@ -7,8 +7,8 @@ declare const savor: {
     capture: (stream: any) => {
         release: () => string;
     };
-    add: (name: any, exec: any) => any;
-    run: (name: any, done: Completion) => void;
+    add: (name: any, exec?: any) => any;
+    run: (name: any, done?: Completion | undefined) => void;
     promiseShouldSucceed: typeof promiseShouldSucceed;
     promiseShouldFail: typeof promiseShouldFail;
     allTests: any[];

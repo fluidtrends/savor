@@ -1,6 +1,3 @@
-import Sinon from "sinon"
-import Chai from "chai"
-
 export interface Context {
     expect: any,
     assert: any,
@@ -13,6 +10,11 @@ export interface Context {
     clock: any
 }
 
-export type Completion = (error?: Error) => void;
-export type ResultError = (error: Error) => any;
+export interface Command {
+    bin: string;
+    args: string[];
+}
+
+export type Completion = (error?: TypeError) => void;
+export type ResultError = (error: TypeError) => any;
 export type Result = (data?: any) => any;

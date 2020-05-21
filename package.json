@@ -1,13 +1,15 @@
 {
   "name": "savor",
-  "version": "1.2.1",
-  "description": "A simple way of adding tests to your Node modules",
+  "version": "1.3.0",
+  "description": "Make your Node Typescript unit testing a piece a cake.",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --recursive test/specs/**/*.js",
-    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --report lcovonly test/specs/**/*.js"
+    "build": "bin/cli.js build",
+    "test": "bin/cli.js test",
+    "cov": "bin/cli.js cov",
+    "viewcov": "bin/cli.js viewcov"
   },
   "bin": {
-    "savor": "bin/index.js"
+    "savor": "bin/cli.js"
   },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -17,15 +19,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/idancali/savor.git"
+    "url": "git+https://github.com/fluidtrends/savor.git"
   },
   "author": "I. Dan Calinescu <idancalinescu@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/idancali/savor/issues"
+    "url": "https://github.com/fluidtrends/savor/issues"
   },
   "keywords": [
     "bdd",
+    "fluidtrends",
     "tdd",
     "mocha",
     "unit-testing",
@@ -34,7 +37,7 @@
     "test",
     "coverage"
   ],
-  "homepage": "https://github.com/idancali/savor",
+  "homepage": "https://github.com/fluidtrends/savor",
   "dependencies": {
     "@types/chai": "^4.2.11",
     "@types/chai-as-promised": "^7.1.2",
@@ -45,21 +48,14 @@
     "@types/tmp": "^0.2.0",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
-    "codacy-coverage": "^1.1.3",
-    "codeclimate-test-reporter": "^0.4.0",
-    "coveralls": "^2.11.12",
     "cross-env": "^7.0.2",
-    "esdoc": "^1.0.4",
-    "esdoc-standard-plugin": "^1.0.0",
     "fs-extra": "^0.30.0",
     "mocha": "^4.0.1",
     "mocha-lcov-reporter": "^1.2.0",
     "nyc": "^15.0.0",
-    "opn": "^4.0.2",
     "sinon": "^8.1.1",
-    "standard": "^10.0.3",
     "tmp": "0.0.28",
     "ts-node": "^8.10.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.3"
   }
 }
