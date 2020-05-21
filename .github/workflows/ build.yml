@@ -20,7 +20,7 @@ jobs:
       name: "Create coverage"
       run: | 
         npm ci
-        npm run coverage
+        npm run cov
         ./tmp/cc-test-reporter format-coverage -t lcov -o ./tmp/codeclimate.main.json --add-prefix main
     - shell: bash
       name: "Upload the combined coverage report to Code Climate"
